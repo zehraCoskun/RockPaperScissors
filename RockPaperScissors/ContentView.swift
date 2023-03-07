@@ -10,7 +10,7 @@ struct OptionsView : View {
     var options : [String]
     var number : Int
     var body: some View {
-        Text(options[number])
+        Image(options[number])
             .padding(10)
             .background(.yellow)
             .cornerRadius(20)
@@ -34,7 +34,7 @@ extension View {
     
 }
 struct ContentView: View {
-    @State private var options = [" Rock     ", " Paper   ", "Scissors"]
+    @State private var options = ["rock", "paper", "scissors"]
     @State private var appChoice = " Mmmm düşüneyim..."
     @State private var alertText = ""
     @State private var appWin = 0
@@ -64,6 +64,8 @@ struct ContentView: View {
                     Spacer()
                     Text("\(appChoice)")
                         .titleView()
+                    Image("\(appChoice)")
+                        .titleView()
                     Spacer()
                     Text("\(alertText)")
                 }
@@ -85,27 +87,27 @@ struct ContentView: View {
     func optionTapped (_ playerChoice: String) {
         if playerChoice == appChoice {
             alertText = "Tüh aynısını seçtik, tekrar oynayalım"}
-        else if (playerChoice == " Rock     " && appChoice == "Scissors") {
+        else if (playerChoice == "rock" && appChoice == "scissors") {
             alertText = "Ah sen kazandın"
             playerWin += 1
         }
-        else if (playerChoice == " Rock     " && appChoice == " Paper   ") {
+        else if (playerChoice == "rock" && appChoice == "paper") {
             alertText = "Yihhu ben kazandım"
             appWin += 1
         }
-        else if (playerChoice == " Paper   " && appChoice == " Rock     " ) {
+        else if (playerChoice == "paper" && appChoice == "rock" ) {
             alertText = "Ah sen kazandın"
             playerWin += 1
         }
-        else if (playerChoice == " Paper   " && appChoice == "Scissors" ) {
+        else if (playerChoice == "paper" && appChoice == "scissors" ) {
             alertText = "Yihhu ben kazandım"
             appWin += 1
         }
-        else if (playerChoice == "Scissors" && appChoice == " Paper   " ) {
+        else if (playerChoice == "scissors" && appChoice == "paper" ) {
             alertText = "Ah sen kazandın"
             playerWin += 1
         }
-        else if (playerChoice == "Scissors" && appChoice == " Rock     " ) {
+        else if (playerChoice == "scissors" && appChoice == "rock" ) {
             alertText = "Yihhu ben kazandım"
             appWin += 1
         }
